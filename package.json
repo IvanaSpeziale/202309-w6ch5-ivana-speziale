@@ -1,0 +1,11 @@
+{
+  "name": "202309-w6ch5-ivana-speziale",
+  "version": "1.0.0",
+  "description": "Week 6 - Challenge 5 API REST Things I already know / Lo que queráis Crea una API REST que se conecte a un fichero JSON, para manipular recursos de tipo cosas que ya sé. El JSON tendrá una sola propiedad de tipo array, donde almacenarán objetos que representarán cosas que hemos aprendido en el bootcamp.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
