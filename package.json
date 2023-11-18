@@ -7,8 +7,10 @@
   "scripts": {
     "start": "node dist/index.js",
     "start:dev": "cross-env PORT=2700 nodemon dist/index.js",
-    "build": "tsc -w",
-    "test": "jest --watchAll --coverage"
+    "build:ts": "tsc -w",
+    "test": "jest --watchAll --coverage",
+    "test:prod": "jest --watchAll --watchAll=false --coverage --passWithNoTests",
+    "prepare": "husky install"
   },
   "keywords": [],
   "license": "ISC",
