@@ -32,3 +32,11 @@ Borrar 'thing'
 Editar 'thing'
 
 Página de detalle
+
+---
+
+Viajes: Registro de Lugares Favoritos
+
+Permite a los usuarios registrar sus lugares favoritos para viajar.
+Operaciones CRUD para agregar, ver, actualizar y eliminar lugares.
+Campos: nombre del lugar, descripción, ubicación, fecha de visita, etc.

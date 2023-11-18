@@ -10,7 +10,8 @@
     "build:ts": "tsc -w",
     "test": "jest --watchAll --coverage",
     "test:prod": "jest --watchAll --watchAll=false --coverage --passWithNoTests",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "api": "json-server --watch api/db.json"
   },
   "keywords": [],
   "license": "ISC",
