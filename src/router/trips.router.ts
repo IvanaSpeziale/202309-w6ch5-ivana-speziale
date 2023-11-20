@@ -1,29 +1,19 @@
 import { Router as createRouter } from 'express';
-import {
-  create,
-  getAll,
-  getById,
-  remove,
-  update,
-} from '../controller/trips.controller.js';
+import createDebug from 'debug';
+import { TripsController } from '../controllers/trips.controller.js';
+
+const debug = createDebug('W7E:tasks:router');
 
 export const tripsRouter = createRouter();
+debug('Starting');
 
-tripsRouter.get('/', getAll);
-tripsRouter.get('/:id', getById);
-tripsRouter.post('/', create);
-tripsRouter.patch('/:id', update);
-tripsRouter.delete('/:id', remove);
+const controller = new TripsController();
 
-const express = require('express');
-const tripController = require('./trips.controller');
-
-const router = express.Router();
-
-router.get('/things', tripController.getTrips);
-router.get('/things/:id', tripController.getTripById);
-router.delete('/things/:id', tripController.deleteTrip);
-router.post('/things', tripController.addTrip);
-router.patch('/things/:id', tripController.updateTrip);
-
-module.exports = router;
+tripsRouter.get('/', controller.getAll.bind(controller));
+tripsRouter.get('/search', controller.search.bind(controller));
+tripsRouter.get('/:id', controller.getById.bind(controller));
+tripsRouter.post('/', controller.create.bind(controller));
+tripsRouter.patch('/:id', controller.update.bind(controller));
+tripsRouter.patch('trip/:id', controller.update.bind(controller));
+tripsRouter.patch('trip/:id', controller.update.bind(controller));
+tripsRouter.delete('/:id', controller.delete.bind(controller));

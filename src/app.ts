@@ -1,9 +1,16 @@
-import express, { NextFunction, Request, Response } from 'express';
+import express from 'express';
 import cors from 'cors';
 import morgan from 'morgan';
 import { tripsRouter } from './router/trips.router';
+// Temp import { notesRouter } from './router/notes.router.js';
+import createDebug from 'debug';
+
+import { errorMiddleware } from './middleware/error.middleware.js';
+
+const debug = createDebug('W7E:app');
 
 export const app = express();
+debug('Starting');
 
 app.use(cors());
 app.use(morgan('dev'));
@@ -11,9 +18,7 @@ app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.static('public'));
 
-app.use((_req: Request, res: Response, next: NextFunction) => {
-  console.log('Hola Mundo desde Express');
-  next();
-});
+app.use('/tasks', tripsRouter);
+// Temp app.use('/notes', notesRouter);
 
-app.use('/trips', tripsRouter);
+app.use(errorMiddleware);
