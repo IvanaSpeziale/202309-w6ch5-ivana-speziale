@@ -11,7 +11,7 @@ export class TripsFileRepo implements Repository<Trip> {
   trips: Trip[];
   constructor() {
     debug('Instantiated');
-    this.file = './data/data.json';
+    this.file = './data/db.json';
     this.trips = [];
     this.loadData();
   }

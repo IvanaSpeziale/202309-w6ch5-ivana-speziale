@@ -20,6 +20,13 @@
       "description": "Montana de Ushuaia, con una dificultad alta y duracion de 5 horas ida.",
       "location": "Ushuaia",
       "season": "Verano"
+    },
+    {
+      "id": 5,
+      "placeName": "Santa Cruz",
+      "description": "Montana de Ushuaia, con una dificultad alta y duracion de 5 horas ida.",
+      "location": "Ushuaia",
+      "season": "Verano"
     }
   ]
 }

@@ -12,7 +12,7 @@
     "test": "jest --watchAll --coverage",
     "test:prod": "jest --watchAll --watchAll=false --coverage --passWithNoTests",
     "prepare": "husky install",
-    "api": "json-server --watch api/db.json"
+    "api": "json-server --watch data/db.json"
   },
   "keywords": [],
   "license": "ISC",
