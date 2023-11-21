@@ -8,18 +8,8 @@ import { TripModel } from './trips.mongo.model.js';
 const debug = createDebug('W7E:trips:mongo:repo');
 
 export class TripsMongoRepo implements Repository<Trip> {
-  file: string;
-  trips: Trip[];
   constructor() {
     debug('Instantiated');
-    this.file = './data/db.json';
-    this.trips = [];
-    this.loadData();
-  }
-
-  private async loadData() {
-    const data = await fs.readFile(this.file, { encoding: 'utf-8' });
-    this.trips = JSON.parse(data);
   }
 
   async getAll(): Promise<Trip[]> {
@@ -33,13 +23,19 @@ export class TripsMongoRepo implements Repository<Trip> {
     return result;
   }
 
+  search({ _key, _value }: { _key: string; _value: unknown }): Promise<Trip[]> {
+    throw new Error('Method not implemented.');
+  }
+
   async create(newItem: Omit<Trip, 'id'>): Promise<Trip> {
     const result: Trip = await TripModel.create(newItem);
     return result;
   }
 
   async update(id: string, updatedItem: Partial<Trip>): Promise<Trip> {
-    const result = await TripModel.findByIdAndUpdate(id, updatedItem);
+    const result = await TripModel.findByIdAndUpdate(id, updatedItem, {
+      new: true,
+    });
     if (!result) throw new HttpError(404, 'Not Found', 'Update not possible');
     return result;
   }

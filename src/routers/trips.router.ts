@@ -3,7 +3,7 @@ import createDebug from 'debug';
 import { TripsController } from '../controllers/trips.controller.js';
 import { TripsMongoRepo } from '../repos/trips.mongo.repo.js';
 
-const debug = createDebug('W7E:tasks:router');
+const debug = createDebug('w7E:tasks:router');
 
 export const tripsRouter = createRouter();
 debug('Starting');

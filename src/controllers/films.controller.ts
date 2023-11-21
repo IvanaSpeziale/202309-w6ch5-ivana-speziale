@@ -1,12 +1,14 @@
 import { NextFunction, Request, Response } from 'express';
+
 import createDebug from 'debug';
-import { Repository } from '../repos/repo.js';
-import { Trip } from '../entities/trip.model.js';
+import { Repository } from '../repos/repo';
+import { Film } from '../entities/film';
 
-const debug = createDebug('w7E:tasks:controller');
+const debug = createDebug('w7E:films:controller');
 
-export class TripsController {
-  constructor(private repo: Repository<Trip>) {
+export class FilmsController {
+  // eslint-disable-next-line no-unused-vars
+  constructor(private repo: Repository<Film>) {
     debug('Instantiated');
   }
 

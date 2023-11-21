@@ -21,4 +21,13 @@ const tripsSchema = new Schema<Trip>({
   },
 });
 
+tripsSchema.set('toJSON', {
+  transform(_document, returnedObject) {
+    returnedObject.id = returnedObject._id;
+    delete returnedObject._id;
+    delete returnedObject.__v;
+    delete returnedObject.passwd;
+  },
+});
+
 export const TripModel = model('Trip', tripsSchema, 'trips'); //collecion o tabla. Estructura donde se guarda la informacion

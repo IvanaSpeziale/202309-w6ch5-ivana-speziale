@@ -2,81 +2,55 @@ import { Request, Response } from 'express';
 import { TripsController } from './trips.controller';
 import { TripsFileRepo } from '../repos/trips.file.repo';
 
-describe('Given TasksController class', () => {
+describe('Given TripsController class', () => {
   let controller: TripsController;
   let mockRequest: Request;
   let mockResponse: Response;
-  let mockrepo: TripsFileRepo;
   let mockNext: jest.Mock;
   beforeEach(() => {
-    const mockrepo = {
-      getAll: jest.fn().mockResolvedValue([{}]),
-      getById: jest.fn(),
-    } as unknown as TripsFileRepo;
-
-    controller = new TripsController(mockrepo);
-
     mockRequest = {
       body: {},
+      params: {},
     } as Request;
-
     mockResponse = {
       json: jest.fn(),
     } as unknown as Response;
-
     mockNext = jest.fn();
   });
-  describe('When we instantiate it', () => {
-    let controller: TripsController;
-    let mockRequest: Request;
-    let mockResponse: Response;
-    let mockrepo: TripsFileRepo;
-    let mockNext: jest.Mock;
-
+  describe('When we instantiate it without errors', () => {
     beforeEach(() => {
-      const mockrepo = {
+      const mockRepo = {
         getAll: jest.fn().mockResolvedValue([{}]),
-        getById: jest.fn(),
+        getById: jest.fn().mockResolvedValue({}),
       } as unknown as TripsFileRepo;
 
-      controller = new TripsController(mockrepo);
-
-      mockRequest = {
-        body: {},
-      } as Request;
-
-      mockResponse = {
-        json: jest.fn(),
-      } as unknown as Response;
-
-      mockNext = jest.fn();
+      controller = new TripsController(mockRepo);
     });
 
     test('Then getAll should ...', async () => {
-      TripsFileRepo.prototype.getAll = jest.fn().mockResolvedValue([{}]);
-      await controller.getAll(mockRequest, mockResponse);
+      await controller.getAll(mockRequest, mockResponse, mockNext);
       expect(mockResponse.json).toHaveBeenCalledWith([{}]);
     });
 
     test('Then getById should ...', async () => {
-      TripsFileRepo.prototype.getAll = jest.fn().mockResolvedValue([{}]);
       await controller.getById(mockRequest, mockResponse, mockNext);
-      expect(mockResponse.json).toHaveBeenCalledWith([{}]);
+      expect(mockResponse.json).toHaveBeenCalledWith({});
     });
   });
 
-  describe('When we instanciate it with errors', (): void => {
+  describe('When we instantiate it WITH errors', () => {
+    let mockError: Error;
     beforeEach(() => {
-      const mockError = new Error('Mock error');
+      mockError = new Error('Mock error');
       const mockRepo = {
         getById: jest.fn().mockRejectedValue(mockError),
       } as unknown as TripsFileRepo;
 
       controller = new TripsController(mockRepo);
     });
-    /* test('', async () => {
+    test('Then getById should ...', async () => {
       await controller.getById(mockRequest, mockResponse, mockNext);
-      expect(mockNext).toHaveBeenCalledWith(mockError);
-    });  */
+      expect(mockNext).toHaveBeenLastCalledWith(mockError);
+    });
   });
 });
