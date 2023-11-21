@@ -1,12 +1,13 @@
 import { NextFunction, Request, Response } from 'express';
 import { TripsFileRepo } from '../repos/trips.file.repo.js';
 import createDebug from 'debug';
+import { Repository } from '../repos/repo.js';
+import { Trip } from '../entities/trip.model.js';
 
 const debug = createDebug('W7E:tasks:controller');
 
 export class TripsController {
-  repo: TripsFileRepo;
-  constructor() {
+  constructor(private repo: Repository<Trip>) {
     debug('Instantiated');
     this.repo = new TripsFileRepo();
   }
@@ -34,9 +35,15 @@ export class TripsController {
     res.json(result);
   }
 
-  async update(req: Request, res: Response) {
-    const result = await this.repo.update(req.params.id, req.body);
-    res.json(result);
+  async update(req: Request, res: Response, next: NextFunction) {
+    try {
+      const result = await this.repo.update(req.params.id, req.body);
+      res.status(200);
+      res.statusMessage = 'ok';
+      res.json(result);
+    } catch (error) {
+      next(error);
+    }
   }
 
   async delete(req: Request, res: Response, next: NextFunction) {

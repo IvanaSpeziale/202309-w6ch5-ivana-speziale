@@ -1,25 +1,30 @@
-{
-  "trips": [
-    {
-      "id": 2,
-      "placeName": "Olivia",
-      "description": "Cerro dentro de la ciudad, con una dificultad media alta y duracion de 4 horas ida.",
-      "location": "Ushuaia",
-      "season": "Verano"
-    },
-    {
-      "id": 3,
-      "placeName": "Monte Olivia",
-      "description": "Montana a 3km de Ushuaia, con una dificultad alta y duracion de 5 horas ida.",
-      "location": "Ushuaia",
-      "season": "Verano"
-    },
-    {
-      "id": 4,
-      "placeName": "Vicinguerra",
-      "description": "Montana de Ushuaia, con una dificultad alta y duracion de 5 horas ida.",
-      "location": "Ushuaia",
-      "season": "Verano"
-    }
-  ]
-}
+[
+  {
+    "id": "2",
+    "placeName": "Olivia",
+    "description": "Cerro dentro de la ciudad, con una dificultad media alta y duracion de 4 horas ida.",
+    "location": "Ushuaia",
+    "season": "Verano"
+  },
+  {
+    "id": "3",
+    "placeName": "Monte Olivia",
+    "description": "Montana a 3km de Ushuaia, con una dificultad alta y duracion de 5 horas ida.",
+    "location": "Ushuaia",
+    "season": "Verano"
+  },
+  {
+    "id": "4",
+    "placeName": "Vicinguerra",
+    "description": "Montana de Ushuaia, con una dificultad alta y duracion de 5 horas ida.",
+    "location": "Ushuaia",
+    "season": "Verano"
+  },
+  {
+    "id": "5",
+    "placeName": "Santa Cruz",
+    "description": "Montana de Ushuaia, con una dificultad alta y duracion de 5 horas ida.",
+    "location": "Ushuaia",
+    "season": "Verano"
+  }
+]
