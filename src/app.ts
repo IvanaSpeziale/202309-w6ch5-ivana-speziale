@@ -1,8 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import morgan from 'morgan';
-import { tripsRouter } from './router/trips.router';
-// Temp import { notesRouter } from './router/notes.router.js';
+import { tripsRouter } from './routers/trips.router.js';
 import createDebug from 'debug';
 
 import { errorMiddleware } from './middleware/error.middleware.js';
@@ -19,6 +18,5 @@ app.use(express.json());
 app.use(express.static('public'));
 
 app.use('/tasks', tripsRouter);
-// Temp app.use('/notes', notesRouter);
 
 app.use(errorMiddleware);

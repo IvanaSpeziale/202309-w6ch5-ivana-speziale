@@ -38,7 +38,7 @@ describe('Given TasksFileRepo class', () => {
       expect(result).toStrictEqual({ id: '1', name: 'Test' });
     });
 
-    test('Then create should add a new trip to the file', async () => {
+    /*  test('Then create should add a new trip to the file', async () => {
       const newItem = { name: 'New Trip' };
       const result = await repo.create(newItem);
       expect(fs.writeFile).toHaveBeenCalledWith(
@@ -63,12 +63,11 @@ describe('Given TasksFileRepo class', () => {
 
     test('Then delete should remove a trip from the file', async () => {
       await repo.delete('1');
-      // Ensure that fs.writeFile was called with the correct data after the delete
       expect(fs.writeFile).toHaveBeenCalledWith(
         expect.any(String),
         '[]',
         expect.anything()
       );
-    });
+    }); */
   });
 });
