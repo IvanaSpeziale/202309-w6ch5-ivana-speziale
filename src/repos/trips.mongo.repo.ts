@@ -1,9 +1,9 @@
 import fs from 'fs/promises';
-import { Trip } from '../entities/trip.model';
+import { Trip } from '../entities/trip.model.js';
 import { Repository } from './repo';
 import { HttpError } from '../types/http.error.js';
 import createDebug from 'debug';
-import { TripModel } from './trips.mongo.model';
+import { TripModel } from './trips.mongo.model.js';
 
 const debug = createDebug('W7E:trips:mongo:repo');
 

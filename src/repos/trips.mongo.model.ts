@@ -1,5 +1,5 @@
 import { Schema, model } from 'mongoose';
-import { Trip } from '../entities/trip.model';
+import { Trip } from '../entities/trip.model.js';
 
 const tripsSchema = new Schema<Trip>({
   placeName: {
