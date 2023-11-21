@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import { TripsController } from './trips.controller';
-import { TripsFileRepo } from '../repos/trips.file.repo';
+import { TripsMongoRepo } from '../repos/trips.mongo.repo';
 
 describe('Given TripsController class', () => {
   let controller: TripsController;
@@ -22,7 +22,7 @@ describe('Given TripsController class', () => {
       const mockRepo = {
         getAll: jest.fn().mockResolvedValue([{}]),
         getById: jest.fn().mockResolvedValue({}),
-      } as unknown as TripsFileRepo;
+      } as unknown as TripsMongoRepo;
 
       controller = new TripsController(mockRepo);
     });
@@ -44,7 +44,7 @@ describe('Given TripsController class', () => {
       mockError = new Error('Mock error');
       const mockRepo = {
         getById: jest.fn().mockRejectedValue(mockError),
-      } as unknown as TripsFileRepo;
+      } as unknown as TripsMongoRepo;
 
       controller = new TripsController(mockRepo);
     });
