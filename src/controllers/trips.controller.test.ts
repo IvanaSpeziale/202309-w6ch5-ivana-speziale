@@ -1,7 +1,6 @@
-/* import { Request, Response } from 'express';
+import { Request, Response } from 'express';
 import { TripsController } from './trips.controller';
 import { TripsFileRepo } from '../repos/trips.file.repo';
-import { mock } from 'node:test';
 
 describe('Given TasksController class', () => {
   let controller: TripsController;
@@ -73,12 +72,11 @@ describe('Given TasksController class', () => {
         getById: jest.fn().mockRejectedValue(mockError),
       } as unknown as TripsFileRepo;
 
-      controller = new TripsController(mockError);
+      controller = new TripsController(mockRepo);
     });
-    test('', async () => {
+    /* test('', async () => {
       await controller.getById(mockRequest, mockResponse, mockNext);
       expect(mockNext).toHaveBeenCalledWith(mockError);
-    });
+    });  */
   });
 });
- */
