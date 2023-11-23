@@ -3,7 +3,7 @@ import { UsersController } from '../controllers/users.controller.js';
 import createDebug from 'debug';
 import { UsersMongoRepo } from '../repos/users/users.mongo.repo.js';
 
-const debug = createDebug('W7E:users:router');
+const debug = createDebug('w7E:users:router');
 
 export const usersRouter = createRouter();
 debug('Starting');

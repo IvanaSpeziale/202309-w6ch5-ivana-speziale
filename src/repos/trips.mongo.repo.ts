@@ -6,7 +6,7 @@ import createDebug from 'debug';
 import { TripModel } from './trips.mongo.model.js';
 import { UsersMongoRepo } from './users/users.mongo.repo.js';
 
-const debug = createDebug('W7E:trips:mongo:repo');
+const debug = createDebug('w7E:trips:mongo:repo');
 
 export class TripsMongoRepo implements Repository<Trip> {
   userRepo: UsersMongoRepo;

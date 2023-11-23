@@ -1,10 +1,9 @@
 import { NextFunction, Request, Response } from 'express';
-import { TripsFileRepo } from '../repos/trips.file.repo.js';
 import createDebug from 'debug';
 import { Repository } from '../repos/repo.js';
 import { Trip } from '../entities/trip.model.js';
 
-const debug = createDebug('W7E:tasks:controller');
+const debug = createDebug('w7E:tasks:controller');
 
 export class TripsController {
   constructor(private repo: Repository<Trip>) {

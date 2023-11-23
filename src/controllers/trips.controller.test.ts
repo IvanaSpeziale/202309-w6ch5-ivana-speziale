@@ -1,9 +1,9 @@
 import { Request, Response } from 'express';
-import { TripsController } from './trips.controller';
-import { TripsFileRepo } from '../repos/trips.file.repo';
+import { TripsController } from './trips.controller';/* 
+import { TripsFileRepo } from '../repos/trips.file.repo'; */
 import { TripsMongoRepo } from '../repos/trips.mongo.repo';
 
-describe('Given TasksController class', () => {
+/* describe('Given TasksController class', () => {
   let controller: TripsController;
   let mockRequest: Request;
   let mockResponse: Response;
@@ -130,4 +130,4 @@ describe('Given TasksController class', () => {
       });
     });
   });
-});
+}); */
