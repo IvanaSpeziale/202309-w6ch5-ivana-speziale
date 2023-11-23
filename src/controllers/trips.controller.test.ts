@@ -60,7 +60,7 @@ describe('Given TasksController class', () => {
       });
 
       test('Then getAll should...', async () => {
-        await controller.getAll(mockRequest, mockResponse, mockNext);
+        await controller.getAll(mockRequest, mockResponse);
         expect(mockResponse.json).toHaveBeenCalledWith([{}]);
       });
 
@@ -70,7 +70,7 @@ describe('Given TasksController class', () => {
       });
 
       test('Then create should...', async () => {
-        await controller.create(mockRequest, mockResponse, mockNext);
+        await controller.create(mockRequest, mockResponse);
         expect(mockResponse.status).toHaveBeenCalledWith(201);
         expect(mockResponse.statusMessage).toBe('Created');
         expect(mockResponse.json).toHaveBeenCalledWith({});
