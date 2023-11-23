@@ -105,8 +105,8 @@ describe('Given TasksController class', () => {
         controller = new TripsController(mockRepo);
       });
       test('Then getAll should...', async () => {
-        await controller.getAll(mockRequest, mockResponse, mockNext);
-        expect(mockNext).toHaveBeenCalledWith(mockError);
+        await controller.getAll(mockRequest, mockResponse);
+        expect(mockResponse).toHaveBeenCalledWith(mockError);
       });
 
       test('Then getById should...', async () => {
@@ -115,8 +115,8 @@ describe('Given TasksController class', () => {
       });
 
       test('Then create should...', async () => {
-        await controller.create(mockRequest, mockResponse, mockNext);
-        expect(mockNext).toHaveBeenCalledWith(mockError);
+        await controller.create(mockRequest, mockResponse);
+        expect(mockResponse).toHaveBeenCalledWith(mockError);
       });
 
       test('Then update should...', async () => {
