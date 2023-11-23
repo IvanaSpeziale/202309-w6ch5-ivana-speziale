@@ -9,7 +9,6 @@ const debug = createDebug('W7E:tasks:controller');
 export class TripsController {
   constructor(private repo: Repository<Trip>) {
     debug('Instantiated');
-    this.repo = new TripsFileRepo();
   }
 
   async getAll(_req: Request, res: Response) {
@@ -26,7 +25,17 @@ export class TripsController {
     }
   }
 
-  search = (_req: Request, _res: Response) => {};
+  async search(req: Request, res: Response, next: NextFunction) {
+    try {
+      const result = await this.repo.search({
+        key: Object.entries(req.query)[0][0] as keyof Trip,
+        value: Object.entries(req.query)[0][1],
+      });
+      res.json(result);
+    } catch (error) {
+      next(error);
+    }
+  }
 
   async create(req: Request, res: Response) {
     const result = await this.repo.create(req.body);

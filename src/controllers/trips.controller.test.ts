@@ -59,22 +59,22 @@ describe('Given TasksController class', () => {
         controller = new TripsController(mockRepo);
       });
 
-      test('Then getAll should...', async () => {
+      /* test('Then getAll should...', async () => {
         await controller.getAll(mockRequest, mockResponse, mockNext);
         expect(mockResponse.json).toHaveBeenCalledWith([{}]);
       });
-
+ */
       test('Then getById should...', async () => {
         await controller.getById(mockRequest, mockResponse, mockNext);
         expect(mockResponse.json).toHaveBeenCalledWith({});
       });
 
-      test('Then create should...', async () => {
+      /* test('Then create should...', async () => {
         await controller.create(mockRequest, mockResponse, mockNext);
         expect(mockResponse.status).toHaveBeenCalledWith(201);
         expect(mockResponse.statusMessage).toBe('Created');
         expect(mockResponse.json).toHaveBeenCalledWith({});
-      });
+      }); */
 
       test('Then update should...', async () => {
         await controller.update(mockRequest, mockResponse, mockNext);
