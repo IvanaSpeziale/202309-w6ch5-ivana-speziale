@@ -5,6 +5,7 @@ import { tripsRouter } from './routers/trips.router.js';
 import createDebug from 'debug';
 
 import { errorMiddleware } from './middleware/error.middleware.js';
+import { usersRouter } from './routers/users.router.js';
 
 const debug = createDebug('W7E:app');
 
@@ -17,6 +18,7 @@ app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.static('public'));
 
-app.use('/tasks', tripsRouter);
+app.use('/users', usersRouter);
+app.use('/trips', tripsRouter);
 
 app.use(errorMiddleware);

@@ -1,27 +1,30 @@
 import { Schema, model } from 'mongoose';
-import { Trip } from '../entities/trip.model.js';
+import { User } from '../../entities/user.js';
 
-const tripsSchema = new Schema<Trip>({
-  placeName: {
+const usersSchema = new Schema<User>({
+  email: {
     type: String,
     required: true,
     unique: true,
   },
-  location: {
+  passwd: {
     type: String,
     required: true,
   },
-  description: {
+  name: {
     type: String,
-    required: true,
   },
-  season: {
-    type: String,
-    required: true,
-  },
+  surname: String,
+  age: Number,
+  trips: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'Trip',
+    },
+  ],
 });
 
-tripsSchema.set('toJSON', {
+usersSchema.set('toJSON', {
   transform(_document, returnedObject) {
     returnedObject.id = returnedObject._id;
     delete returnedObject._id;
@@ -30,4 +33,4 @@ tripsSchema.set('toJSON', {
   },
 });
 
-export const TripModel = model('Trip', tripsSchema, 'trips'); //collecion o tabla. Estructura donde se guarda la informacion
+export const UserModel = model('User', usersSchema, 'users');
