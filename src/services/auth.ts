@@ -1,10 +1,8 @@
 import { hash, compare } from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import 'dotenv/config';
-import createDebug from 'debug';
 import { User } from '../entities/user.js';
-
-const debug = createDebug('w7E:auth');
+import { HttpError } from '../types/http.error.js';
 
 type TokenPayload = {
   id: User['id'];
@@ -24,5 +22,16 @@ export abstract class Auth {
 
   static signJWT(payload: TokenPayload) {
     return jwt.sign(payload, Auth.secret!);
+  }
+
+  static verifyAndGetPayload(token: string) {
+    try {
+      const result = jwt.verify(token, Auth.secret!);
+      if (typeof result === 'string')
+        throw new HttpError(498, 'Invalid token', result);
+      return result as TokenPayload;
+    } catch (error) {
+      throw new HttpError(498, 'Invalid token', (error as Error).message);
+    }
   }
 }

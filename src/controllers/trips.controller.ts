@@ -2,8 +2,10 @@ import { NextFunction, Request, Response } from 'express';
 import createDebug from 'debug';
 import { Repository } from '../repos/repo.js';
 import { Trip } from '../entities/trip.model.js';
+import { Auth } from '../services/auth.js';
+import { HttpError } from '../types/http.error.js';
 
-const debug = createDebug('w7E:tasks:controller');
+const debug = createDebug('w7E:trips:controller');
 
 export class TripsController {
   constructor(private repo: Repository<Trip>) {
@@ -36,11 +38,16 @@ export class TripsController {
     }
   }
 
-  async create(req: Request, res: Response) {
-    const result = await this.repo.create(req.body);
-    res.status(201);
-    res.statusMessage = 'Created';
-    res.json(result);
+  async create(req: Request, res: Response, next: NextFunction) {
+    try {
+      req.body.author = { id: req.body.userID };
+      const result = await this.repo.create(req.body);
+      res.status(201);
+      res.statusMessage = 'Created';
+      res.json(result);
+    } catch (error) {
+      next(error);
+    }
   }
 
   async update(req: Request, res: Response, next: NextFunction) {
